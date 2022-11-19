@@ -60,7 +60,7 @@ public class JdbcPostRepositoryImpl implements PostRepository {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return post;
+        return getById(post.getId());
     }
 
     @Override

@@ -2,33 +2,32 @@ package com.kaparzh.crud2.controller;
 
 import com.kaparzh.crud2.model.Post;
 import com.kaparzh.crud2.model.Writer;
-import com.kaparzh.crud2.repository.WriterRepository;
-import com.kaparzh.crud2.repository.impl.JdbcWriterRepositoryImpl;
+import com.kaparzh.crud2.service.WriterService;
+import com.kaparzh.crud2.service.impl.WriterServiceImpl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class WriterController {
 
-    private final WriterRepository writers = new JdbcWriterRepositoryImpl();
+    private final WriterService writerService = new WriterServiceImpl();
 
     public Writer addWriter(String firstName, String lastName, List<Post> postList) {
-        return writers.save(new Writer(1, firstName, lastName, postList));
+        return writerService.create(firstName, lastName, postList);
     }
 
     public Writer updateWriter(String firstName, String lastName) {
-        return writers.update(new Writer(1, firstName, lastName, new ArrayList<>()));
+        return writerService.update(firstName, lastName);
     }
 
     public void deleteById(int id) {
-        writers.deleteById(id);
+        writerService.delete(id);
     }
 
     public Writer getById(int id) {
-        return writers.getById(id);
+        return writerService.getById(id);
     }
 
     public List<Writer> getAll() {
-        return writers.getAll();
+        return writerService.getAll();
     }
 }

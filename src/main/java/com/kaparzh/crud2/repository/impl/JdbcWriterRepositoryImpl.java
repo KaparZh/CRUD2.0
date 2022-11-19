@@ -68,10 +68,12 @@ public class JdbcWriterRepositoryImpl implements WriterRepository {
 
     @Override
     public void deleteById(Integer id) {
-        String sql = "DELETE FROM writer WHERE writer.id = ?;";
-        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-            preparedStatement.setInt(1, id);
-            preparedStatement.executeUpdate();
+        String sql = String.format("DELETE FROM writer WHERE writer.id = %d;", id);
+        try (Statement statement = connection.createStatement()) {
+            statement.addBatch(sql);
+            sql = String.format("DELETE FROM writer_post WHERE writer_id = %d;", id);
+            statement.addBatch(sql);
+            statement.executeBatch();
         } catch (SQLException e) {
             e.printStackTrace();
         }

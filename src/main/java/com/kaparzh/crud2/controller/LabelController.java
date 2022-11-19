@@ -1,32 +1,32 @@
 package com.kaparzh.crud2.controller;
 
 import com.kaparzh.crud2.model.Label;
-import com.kaparzh.crud2.repository.LabelRepository;
-import com.kaparzh.crud2.repository.impl.JdbcLabelRepositoryImpl;
+import com.kaparzh.crud2.service.LabelService;
+import com.kaparzh.crud2.service.impl.LabelServiceImpl;
 
 import java.util.List;
 
 public class LabelController {
 
-    private final LabelRepository labels = new JdbcLabelRepositoryImpl();
+    private final LabelService labelService = new LabelServiceImpl();
 
     public Label createLabel(String labelName) {
-        return labels.save(new Label(1, labelName));
+        return labelService.create(labelName);
     }
 
     public List<Label> getAll() {
-        return labels.getAll();
+        return labelService.getAll();
     }
 
     public void deleteById(int id) {
-        labels.deleteById(id);
+        labelService.delete(id);
     }
 
     public Label updateLabel(int id, String labelName) {
-        return labels.update(new Label(id, labelName));
+        return labelService.update(id, labelName);
     }
 
     public Label getById(int id) {
-        return labels.getById(id);
+        return labelService.getById(id);
     }
 }
