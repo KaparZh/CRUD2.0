@@ -17,6 +17,9 @@ public class Writer {
         this.posts = posts;
     }
 
+    public Writer() {
+    }
+
     public Integer getId() {
         return id;
     }

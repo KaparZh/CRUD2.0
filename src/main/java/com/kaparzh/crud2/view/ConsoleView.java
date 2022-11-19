@@ -1,5 +1,7 @@
 package com.kaparzh.crud2.view;
 
+import com.kaparzh.crud2.repository.impl.JdbcConnection;
+
 import java.util.Scanner;
 
 import static com.kaparzh.crud2.view.LabelView.LABEL_MENU;
@@ -44,6 +46,7 @@ public class ConsoleView {
                     break;
 
                 case 4:
+                    JdbcConnection.closeConnection();
                     return;
             }
         }

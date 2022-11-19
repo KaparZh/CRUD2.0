@@ -57,11 +57,9 @@ public class LabelView {
 
     private void createLabel() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Enter label id");
-        int id = Integer.parseInt(sc.nextLine());
         System.out.println("Enter label name");
         String labelName = sc.nextLine();
-        Label label = labelController.createLabel(id, labelName);
+        Label label = labelController.createLabel(labelName);
         System.out.println("Created label: " + label);
     }
 

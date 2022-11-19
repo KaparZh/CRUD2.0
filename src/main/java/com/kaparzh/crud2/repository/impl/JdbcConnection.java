@@ -3,7 +3,6 @@ package com.kaparzh.crud2.repository.impl;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class JdbcConnection {
 
@@ -13,34 +12,20 @@ public class JdbcConnection {
     private static final String PASSWORD = "root";
 
     private static Connection connection;
-    private static Statement statement;
 
-    public static Statement getConnection() {
+    public static Connection getConnection() {
         if (connection == null) {
             try {
                 Class.forName(DRIVER);
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            }
-
-            try {
                 connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-                statement = connection.createStatement();
-            } catch (SQLException e) {
+            } catch (ClassNotFoundException | SQLException e) {
                 e.printStackTrace();
             }
         }
-        return statement;
+        return connection;
     }
 
     public static void closeConnection() {
-        if (statement != null) {
-            try {
-                statement.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
         if (connection != null) {
             try {
                 connection.close();

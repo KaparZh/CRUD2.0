@@ -5,6 +5,7 @@ import com.kaparzh.crud2.model.Writer;
 import com.kaparzh.crud2.repository.WriterRepository;
 import com.kaparzh.crud2.repository.impl.JdbcWriterRepositoryImpl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class WriterController {
@@ -15,8 +16,8 @@ public class WriterController {
         return writers.save(new Writer(1, firstName, lastName, postList));
     }
 
-    public Writer updateWriter(int id, String firstName, String lastName, List<Post> postList) {
-        return writers.update(new Writer(id, firstName, lastName, postList));
+    public Writer updateWriter(String firstName, String lastName) {
+        return writers.update(new Writer(1, firstName, lastName, new ArrayList<>()));
     }
 
     public void deleteById(int id) {

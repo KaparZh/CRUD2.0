@@ -52,7 +52,7 @@ public class WriterView {
         System.out.println("Enter lastName:");
         String lastName = sc.nextLine();
 
-        List<Post> postList = getPosts(sc);
+        List<Post> postList = getPosts();
 
         Writer writer = writerController.addWriter(firstName, lastName, postList);
         System.out.println("Created writer: " + writer);
@@ -71,19 +71,19 @@ public class WriterView {
                 System.out.println("Enter new lastName:");
                 String lastName = sc.nextLine();
 
-                List<Post> postList = getPosts(sc);
-
-                Writer writer = writerController.updateWriter(id, firstName, lastName, postList);
+                Writer writer = writerController.updateWriter(firstName, lastName);
                 System.out.println("Updated writer: " + writer);
             }
         }
     }
 
-    private List<Post> getPosts(Scanner sc) {
+    private List<Post> getPosts() {
         List<Post> allPosts = postController.getAll();
         List<Post> writerPosts = new ArrayList<>();
         System.out.println("Choose post id (enter: 0, if you done):");
         allPosts.forEach(System.out::println);
+
+        Scanner sc = new Scanner(System.in);
 
         int postId = sc.nextInt();
         while (postId != 0) {

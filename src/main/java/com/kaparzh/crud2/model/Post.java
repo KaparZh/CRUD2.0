@@ -19,6 +19,10 @@ public class Post {
         this.labels = labels;
     }
 
+    public Post() {
+
+    }
+
     public Integer getId() {
         return id;
     }

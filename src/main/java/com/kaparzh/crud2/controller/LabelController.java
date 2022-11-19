@@ -10,8 +10,8 @@ public class LabelController {
 
     private final LabelRepository labels = new JdbcLabelRepositoryImpl();
 
-    public Label createLabel(int id, String labelName) {
-        return labels.save(new Label(id, labelName));
+    public Label createLabel(String labelName) {
+        return labels.save(new Label(1, labelName));
     }
 
     public List<Label> getAll() {
