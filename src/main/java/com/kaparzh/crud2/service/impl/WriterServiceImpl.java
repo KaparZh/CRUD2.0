@@ -34,7 +34,7 @@ public class WriterServiceImpl implements WriterService {
     }
 
     @Override
-    public Writer update(String firstName, String lastName) {
-        return writerRepository.update(new Writer(1, firstName, lastName, new ArrayList<>()));
+    public Writer update(Integer id,String firstName, String lastName) {
+        return writerRepository.update(new Writer(id, firstName, lastName, new ArrayList<>()));
     }
 }

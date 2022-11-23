@@ -71,7 +71,7 @@ public class WriterView {
                 System.out.println("Enter new lastName:");
                 String lastName = sc.nextLine();
 
-                Writer writer = writerController.updateWriter(firstName, lastName);
+                Writer writer = writerController.updateWriter(id, firstName, lastName);
                 System.out.println("Updated writer: " + writer);
             }
         }

@@ -9,5 +9,5 @@ public interface WriterService extends GenericService<Writer, Integer> {
 
     Writer create(String firstName, String lastName, List<Post> postList);
 
-    Writer update(String firstName, String lastName);
+    Writer update(Integer id, String firstName, String lastName);
 }

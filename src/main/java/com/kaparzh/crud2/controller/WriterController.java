@@ -15,8 +15,8 @@ public class WriterController {
         return writerService.create(firstName, lastName, postList);
     }
 
-    public Writer updateWriter(String firstName, String lastName) {
-        return writerService.update(firstName, lastName);
+    public Writer updateWriter(Integer id, String firstName, String lastName) {
+        return writerService.update(id, firstName, lastName);
     }
 
     public void deleteById(int id) {

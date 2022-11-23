@@ -48,14 +48,7 @@ public class JdbcWriterRepositoryImpl implements WriterRepository {
     @Override
     public Writer update(Writer writer) {
         String sql = "UPDATE writer SET first_name = ?, last_name = ? WHERE writer.id = ?;";
-        try (PreparedStatement preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-
-            try (ResultSet resultSet = preparedStatement.getGeneratedKeys()) {
-                if (resultSet.next()) {
-                    writer.setId(resultSet.getInt(1));
-                }
-            }
-
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setString(1, writer.getFirstName());
             preparedStatement.setString(2, writer.getLastName());
             preparedStatement.setInt(3, writer.getId());
